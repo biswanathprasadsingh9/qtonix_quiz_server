@@ -1,6 +1,8 @@
 const response = require("express");
 
 const Exam = require("../models/Exam");
+const Quiz = require("../models/Quiz");
+
 
 
 // INDEX
@@ -14,6 +16,26 @@ const index = (req, res) => {
       });
     });
 };
+
+const latestexam = (req,res) => {
+  Exam.findOne({status:true},(err,doc)=>{
+    if(doc===undefined){
+      res.json({
+        response:false
+      })
+    }else{
+      Quiz.find({exam_id:doc._id})
+      .then(datas=>{
+        res.json({
+          response:true,
+          examinfo:doc,
+          questions:datas
+        })
+      })
+
+    }
+  })
+}
 
 
 
@@ -84,5 +106,5 @@ const deletefile = (req,res) => {
 
 
 module.exports = {
-  index,store,view,update,deletefile
+  index,store,view,update,deletefile,latestexam
 };

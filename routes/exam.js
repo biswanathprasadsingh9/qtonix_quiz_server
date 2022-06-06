@@ -5,6 +5,7 @@ const ExamController = require('../controllers/ExamController');
 
 
 router.get('/',ExamController.index);
+router.get('/latestexam',ExamController.latestexam);
 router.post('/',ExamController.store);
 router.get('/:id',ExamController.view);
 router.put('/:id',ExamController.update);

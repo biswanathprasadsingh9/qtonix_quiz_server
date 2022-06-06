@@ -17,6 +17,10 @@ const ExamSchema = new Schema({
   status:{
     type:Boolean
   },
+  duration:{
+    type:Number,
+    default:60
+  }
 },{timestamps:true})
 
 const Exam = mongoose.model('Exam',ExamSchema)
