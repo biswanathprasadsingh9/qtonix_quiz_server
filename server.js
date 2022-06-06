@@ -9,6 +9,8 @@ const result = require('dotenv').config();
 // const Test = require('./routes/test');
 const Exam = require('./routes/exam');
 const Quiz = require('./routes/quiz');
+const User = require('./routes/user');
+
 
 // const DomainSearch = require('./routes/domainsearch');
 // const EmailFinder = require('./routes/emailfinder');
@@ -51,6 +53,8 @@ const server = app.listen(process.env.PORT || 5000, () =>
 
 app.use('/api/exam',Exam);
 app.use('/api/quiz',Quiz);
+app.use('/api/user',User);
+
 
 // app.use('/api/user',User);
 // app.use('/api/domainsearch',DomainSearch);
