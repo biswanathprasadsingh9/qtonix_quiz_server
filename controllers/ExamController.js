@@ -2,6 +2,8 @@ const response = require("express");
 
 const Exam = require("../models/Exam");
 const Quiz = require("../models/Quiz");
+const UserExam = require("../models/UserExam");
+
 
 
 
@@ -24,15 +26,22 @@ const latestexam = (req,res) => {
         response:false
       })
     }else{
-      Quiz.find({exam_id:doc._id})
-      .then(datas=>{
+      if(doc===null){
         res.json({
-          response:true,
+          response:false,
           examinfo:doc,
-          questions:datas
+          questions:[]
         })
-      })
-
+      }else{
+        Quiz.find({exam_id:doc._id})
+        .then(datas=>{
+          res.json({
+            response:true,
+            examinfo:doc,
+            questions:datas
+          })
+        })
+      }
     }
   })
 }
@@ -104,7 +113,35 @@ const deletefile = (req,res) => {
 }
 
 
+const examcreateview = (req,res) =>{
+  UserExam.findOne({user_id:req.body.user_id,exam_id:req.body.exam_id},(err,doc)=>{
+    if(doc===null){
+      UserExam.create(req.body)
+      .then(response=>{
+        res.json({
+          response:true,
+          datas:response
+        })
+      })
+    }else{
+      res.json({
+        response:true,
+        datas:doc
+      })
+    }
+  })
+}
+
+const startexam = (req,res) => {
+  UserExam.findOneAndUpdate({user_id:req.body.user_id,exam_id:req.body.exam_id},req.body)
+  .then(response=>{
+    res.json({
+      response:true
+    })
+  })
+}
+
 
 module.exports = {
-  index,store,view,update,deletefile,latestexam
+  index,store,view,update,deletefile,latestexam,examcreateview,startexam
 };
