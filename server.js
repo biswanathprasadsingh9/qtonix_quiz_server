@@ -46,6 +46,16 @@ app.get('/', (req,res)=>{
     res.send('<h1>Quiz Server</h1>')
 })
 
+
+app.get('/update', (req,res)=>{
+    
+      res.json({
+        response:true
+      })
+
+
+})
+
 const server = app.listen(process.env.PORT || 5000, () =>
   console.log("Port 5000")
 );

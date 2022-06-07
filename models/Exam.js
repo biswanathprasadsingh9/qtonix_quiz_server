@@ -18,8 +18,7 @@ const ExamSchema = new Schema({
     type:Boolean
   },
   duration:{
-    type:Number,
-    default:60
+    type:Number
   }
 },{timestamps:true})
 

@@ -12,6 +12,14 @@ const UserExamSchema = new Schema({
     type:Boolean,
     default:false
   },
+  exam_timeout:{
+    type:Boolean,
+    default:false
+  },
+  exam_finished:{
+    type:Boolean,
+    default:false
+  },
   exam_start_time:{
     type:String
   },
