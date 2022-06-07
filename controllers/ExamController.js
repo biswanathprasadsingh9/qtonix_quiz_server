@@ -142,6 +142,7 @@ const startexam = (req,res) => {
 }
 
 
+
 module.exports = {
   index,store,view,update,deletefile,latestexam,examcreateview,startexam
 };

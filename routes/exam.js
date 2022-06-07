@@ -12,7 +12,6 @@ router.post('/start_exam',ExamController.startexam);
 
 
 
-
 router.post('/',ExamController.store);
 router.get('/:id',ExamController.view);
 router.put('/:id',ExamController.update);
