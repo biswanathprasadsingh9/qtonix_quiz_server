@@ -8,6 +8,9 @@ const UserExamSchema = new Schema({
   exam_id:{
     type:String
   },
+  exam_score:{
+    type:Number
+  },
   exam_start:{
     type:Boolean,
     default:false

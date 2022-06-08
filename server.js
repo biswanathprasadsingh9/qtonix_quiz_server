@@ -48,7 +48,22 @@ app.get('/', (req,res)=>{
 
 
 app.get('/update', (req,res)=>{
-    
+    // const QuizDatabase = require('./models/Quiz');
+    //
+    // QuizDatabase.find({})
+    // .then(datas=>{
+    //
+    //   datas.forEach((item, i) => {
+    //
+    //     QuizDatabase.findByIdAndUpdate(item._id,{$set:{exam_id:'629f4241b6c5da7ecf6012ad'}})
+    //     .then(resu=>[
+    //       console.log(i)
+    //     ])
+    //
+    //   });
+    //
+    //
+    // })
       res.json({
         response:true
       })

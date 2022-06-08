@@ -17,6 +17,9 @@ const ExamSchema = new Schema({
   status:{
     type:Boolean
   },
+  pass_percentage:{
+    type:Number
+  },
   duration:{
     type:Number
   }

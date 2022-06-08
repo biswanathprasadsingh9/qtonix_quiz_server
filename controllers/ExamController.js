@@ -142,7 +142,23 @@ const startexam = (req,res) => {
 }
 
 
+const viewscore = (req,res) => {
+  UserExam.findOne({user_id:req.body.user_id,exam_id:req.body.exam_id},(err,doc)=>{
+    if(doc===null){
+      res.json({
+        response:false
+      })
+    }else{
+      res.json({
+        response:true,
+        data:doc
+      })
+    }
+  })
+
+}
+
 
 module.exports = {
-  index,store,view,update,deletefile,latestexam,examcreateview,startexam
+  index,store,view,update,deletefile,latestexam,examcreateview,startexam,viewscore
 };

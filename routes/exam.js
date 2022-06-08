@@ -10,7 +10,7 @@ router.post('/exam_create_view',ExamController.examcreateview);
 router.post('/start_exam',ExamController.startexam);
 
 
-
+router.post('/view_score',ExamController.viewscore);
 
 router.post('/',ExamController.store);
 router.get('/:id',ExamController.view);
