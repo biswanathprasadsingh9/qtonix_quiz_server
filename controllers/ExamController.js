@@ -165,7 +165,7 @@ const submitexam = (req,res) => {
 
 
     var options = {
-      format: "A4",
+      format: "A3",
       orientation: "landscape",
       border: "10mm",
     };
