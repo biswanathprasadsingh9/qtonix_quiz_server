@@ -75,7 +75,7 @@ app.get('/update', (req,res)=>{
 })
 
 const server = app.listen(process.env.PORT || 5009, () =>
-  console.log("Port 5000")
+  console.log("Port 5009")
 );
 
 
