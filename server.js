@@ -7,9 +7,9 @@ const result = require('dotenv').config();
 var path = require("path");
 
 // const Test = require('./routes/test');
-const Exam = require('./routes/exam');
-const Quiz = require('./routes/quiz');
-const User = require('./routes/user');
+// const Exam = require('./routes/exam');
+// const Quiz = require('./routes/quiz');
+// const User = require('./routes/user');
 
 
 // const DomainSearch = require('./routes/domainsearch');
@@ -80,9 +80,9 @@ const server = app.listen(process.env.PORT || 5000, () =>
 );
 
 
-app.use('/api/exam',Exam);
-app.use('/api/quiz',Quiz);
-app.use('/api/user',User);
+// app.use('/api/exam',Exam);
+// app.use('/api/quiz',Quiz);
+// app.use('/api/user',User);
 
 
 // app.use('/api/user',User);
