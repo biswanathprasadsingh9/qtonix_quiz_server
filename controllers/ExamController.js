@@ -116,7 +116,16 @@ const deletefile = (req,res) => {
 const examcreateview = (req,res) =>{
   UserExam.findOne({user_id:req.body.user_id,exam_id:req.body.exam_id},(err,doc)=>{
     if(doc===null){
-      UserExam.create(req.body)
+
+      var d = new Date();
+      var n = d.valueOf();
+      var student_exam_code = 'EX'+n;
+      var tmpData=req.body;
+      tmpData.student_exam_code=student_exam_code;
+      tmpData.certificate_url='not_generated';
+
+
+      UserExam.create(tmpData)
       .then(response=>{
         res.json({
           response:true,
@@ -141,6 +150,63 @@ const startexam = (req,res) => {
   })
 }
 
+const submitexam = (req,res) => {
+
+
+  UserExam.findOneAndUpdate({user_id:req.body.user_id,exam_id:req.body.exam_id},req.body)
+  .then(response=>{
+
+
+    //PDF GENERATE
+    var pdf = require("pdf-creator-node");;
+    var fs = require("fs");
+    var path = require("path");
+    var html = fs.readFileSync(path.join(__dirname, "../pdf_templete/templetetest.html"), "utf8");
+
+
+    var options = {
+      format: "A4",
+      orientation: "landscape",
+      border: "10mm",
+    };
+
+
+
+    var document = {
+      html: html,
+      data: {
+        name:'Biswnath Prasad Singh'
+      },
+      path: "./public/pdf/" + response.student_exam_code + ".pdf",
+      type: "pdf", // "stream" || "buffer" || "" ("" defaults to pdf)
+    };
+
+    console.log(document);
+    pdf
+    .create(document, options)
+    .then((resasas) => {
+      res.json({
+        response:true
+      })
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+    //PDF GENERATE
+
+
+
+
+  })
+
+
+
+
+
+
+}
+
+
 
 const viewscore = (req,res) => {
   UserExam.findOne({user_id:req.body.user_id,exam_id:req.body.exam_id},(err,doc)=>{
@@ -160,5 +226,5 @@ const viewscore = (req,res) => {
 
 
 module.exports = {
-  index,store,view,update,deletefile,latestexam,examcreateview,startexam,viewscore
+  index,store,view,update,deletefile,latestexam,examcreateview,startexam,viewscore,submitexam
 };

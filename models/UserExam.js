@@ -11,6 +11,12 @@ const UserExamSchema = new Schema({
   exam_score:{
     type:Number
   },
+  student_exam_code:{
+    type:String
+  },
+  certificate_url:{
+    type:String
+  },
   exam_start:{
     type:Boolean,
     default:false
