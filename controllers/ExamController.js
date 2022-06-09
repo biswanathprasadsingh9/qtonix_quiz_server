@@ -225,6 +225,29 @@ const viewscore = (req,res) => {
 }
 
 
+const examusersactive = (req,res) => {
+  UserExam.find({exam_id:req.params.exam_id,exam_start:true,exam_finished:false}).select({ "user_id": 1, "student_exam_code": 1, "certificate_url":1})
+  .then(datas=>{
+    res.json({
+      response:true,
+      datas
+    })
+  })
+}
+
+const examuserscompleted = (req,res) => {
+  UserExam.find({exam_id:req.params.exam_id,exam_start:true,exam_finished:true}).select({ "user_id": 1, "student_exam_code": 1, "certificate_url":1, "exam_score":1})
+  .then(datas=>{
+    res.json({
+      response:true,
+      datas
+    })
+  })
+}
+
+
+
+
 module.exports = {
-  index,store,view,update,deletefile,latestexam,examcreateview,startexam,viewscore,submitexam
+  index,store,view,update,deletefile,latestexam,examcreateview,startexam,viewscore,submitexam,examusersactive,examuserscompleted
 };

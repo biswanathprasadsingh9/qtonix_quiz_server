@@ -13,6 +13,9 @@ router.post('/exam_create_view',ExamController.examcreateview);
 router.post('/start_exam',ExamController.startexam);
 router.post('/submit_exam',ExamController.submitexam);
 
+router.get('/exam_users_active/:exam_id',ExamController.examusersactive);
+router.get('/exam_users_completed/:exam_id',ExamController.examuserscompleted);
+
 
 
 router.post('/view_score',ExamController.viewscore);
@@ -21,6 +24,9 @@ router.post('/',ExamController.store);
 router.get('/:id',ExamController.view);
 router.put('/:id',ExamController.update);
 router.patch('/:id',ExamController.deletefile);
+
+
+
 
 
 
