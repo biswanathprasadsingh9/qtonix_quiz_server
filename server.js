@@ -4,12 +4,12 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const result = require('dotenv').config();
-// var path = require("path");
+var path = require("path");
 
 // const Test = require('./routes/test');
-// const Exam = require('./routes/exam');
-// const Quiz = require('./routes/quiz');
-// const User = require('./routes/user');
+const Exam = require('./routes/exam');
+const Quiz = require('./routes/quiz');
+const User = require('./routes/user');
 
 
 // const DomainSearch = require('./routes/domainsearch');
@@ -61,16 +61,21 @@ app.get('/update', (req,res)=>{
     //     ])
     //
     //   });
+    //
+    //
+    // })
+      // res.json({
+      //   response:true
+      // })
 
 
-    })
-      res.json({
-        response:true
-      })
 
-
-
-
+      var urlToImage = require('url-to-image');
+      urlToImage('https://qtonix-quiz-admin.vercel.app', 'googlesss.png').then(function() {
+          // now google.png exists and contains screenshot of google.com
+      }).catch(function(err) {
+          console.error(err);
+      });
 
 
 })
@@ -80,9 +85,9 @@ const server = app.listen(process.env.PORT || 5000, () =>
 );
 
 
-// app.use('/api/exam',Exam);
-// app.use('/api/quiz',Quiz);
-// app.use('/api/user',User);
+app.use('/api/exam',Exam);
+app.use('/api/quiz',Quiz);
+app.use('/api/user',User);
 
 
 // app.use('/api/user',User);
@@ -94,4 +99,4 @@ const server = app.listen(process.env.PORT || 5000, () =>
 //
 // var BulkDomainExtract = require('./routes/bulkdomainextract')(io);
 // app.use('/api/bulkdomainextract',BulkDomainExtract);
-// app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "public")));
