@@ -157,42 +157,42 @@ const submitexam = (req,res) => {
   .then(response=>{
 
 
-    // //PDF GENERATE
-    // var pdf = require("pdf-creator-node");;
-    // var fs = require("fs");
-    // var path = require("path");
-    // var html = fs.readFileSync(path.join(__dirname, "../pdf_templete/templetetest.html"), "utf8");
-    //
-    //
-    // var options = {
-    //   format: "A4",
-    //   orientation: "landscape",
-    //   border: "10mm",
-    // };
-    //
-    //
-    //
-    // var document = {
-    //   html: html,
-    //   data: {
-    //     name:'Biswnath Prasad Singh'
-    //   },
-    //   path: "./public/pdf/" + response.student_exam_code + ".pdf",
-    //   type: "pdf", // "stream" || "buffer" || "" ("" defaults to pdf)
-    // };
-    //
-    // console.log(document);
-    // pdf
-    // .create(document, options)
-    // .then((resasas) => {
-    //   res.json({
-    //     response:true
-    //   })
-    // })
-    // .catch((error) => {
-    //   console.error(error);
-    // });
-    // //PDF GENERATE
+    //PDF GENERATE
+    var pdf = require("pdf-creator-node");;
+    var fs = require("fs");
+    var path = require("path");
+    var html = fs.readFileSync(path.join(__dirname, "../pdf_templete/templetetest.html"), "utf8");
+
+
+    var options = {
+      format: "A4",
+      orientation: "landscape",
+      border: "10mm",
+    };
+
+
+
+    var document = {
+      html: html,
+      data: {
+        name:'Biswnath Prasad Singh'
+      },
+      path: "./public/pdf/" + response.student_exam_code + ".pdf",
+      type: "pdf", // "stream" || "buffer" || "" ("" defaults to pdf)
+    };
+
+    console.log(document);
+    pdf
+    .create(document, options)
+    .then((resasas) => {
+      res.json({
+        response:true
+      })
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+    //PDF GENERATE
 
 
 

@@ -4,7 +4,7 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const result = require('dotenv').config();
-// var path = require("path");
+var path = require("path");
 
 // const Test = require('./routes/test');
 const Exam = require('./routes/exam');
@@ -48,19 +48,19 @@ app.get('/', (req,res)=>{
 
 
 app.get('/update', (req,res)=>{
-    const QuizDatabase = require('./models/Quiz');
-
-    QuizDatabase.find({})
-    .then(datas=>{
-
-      datas.forEach((item, i) => {
-
-        QuizDatabase.findByIdAndUpdate(item._id,{$set:{exam_id:'629f4241b6c5da7ecf6012ad'}})
-        .then(resu=>[
-          console.log(i)
-        ])
-
-      });
+    // const QuizDatabase = require('./models/Quiz');
+    //
+    // QuizDatabase.find({})
+    // .then(datas=>{
+    //
+    //   datas.forEach((item, i) => {
+    //
+    //     QuizDatabase.findByIdAndUpdate(item._id,{$set:{exam_id:'629f4241b6c5da7ecf6012ad'}})
+    //     .then(resu=>[
+    //       console.log(i)
+    //     ])
+    //
+    //   });
 
 
     })
@@ -70,12 +70,7 @@ app.get('/update', (req,res)=>{
 
 
 
-      // var urlToImage = require('url-to-image');
-      // urlToImage('https://qtonix-quiz-admin.vercel.app', 'googlesss.png').then(function() {
-      //     // now google.png exists and contains screenshot of google.com
-      // }).catch(function(err) {
-      //     console.error(err);
-      // });
+
 
 
 })
@@ -99,4 +94,4 @@ app.use('/api/user',User);
 //
 // var BulkDomainExtract = require('./routes/bulkdomainextract')(io);
 // app.use('/api/bulkdomainextract',BulkDomainExtract);
-// app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "public")));
