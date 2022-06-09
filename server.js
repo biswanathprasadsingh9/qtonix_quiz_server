@@ -5,10 +5,10 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const result = require('dotenv').config();
 var path = require("path");
-//
-// const Exam = require('./routes/exam');
-// const Quiz = require('./routes/quiz');
-// const User = require('./routes/user');
+
+const Exam = require('./routes/exam');
+const Quiz = require('./routes/quiz');
+const User = require('./routes/user');
 
 
 mongoose.connect(process.env.MONGODB, {useNewUrlParser: true, useUnifiedTopology:true});
@@ -79,8 +79,8 @@ const server = app.listen(process.env.PORT || 5009, () =>
 );
 
 
-// app.use('/api/exam',Exam);
-// app.use('/api/quiz',Quiz);
-// app.use('/api/user',User);
-//
-// app.use(express.static(path.join(__dirname, "public")));
+app.use('/api/exam',Exam);
+app.use('/api/quiz',Quiz);
+app.use('/api/user',User);
+
+app.use(express.static(path.join(__dirname, "public")));
