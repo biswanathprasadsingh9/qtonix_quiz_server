@@ -4,7 +4,7 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const result = require('dotenv').config();
-var path = require("path");
+// var path = require("path");
 
 // const Test = require('./routes/test');
 // const Exam = require('./routes/exam');
@@ -94,4 +94,4 @@ const server = app.listen(process.env.PORT || 5000, () =>
 //
 // var BulkDomainExtract = require('./routes/bulkdomainextract')(io);
 // app.use('/api/bulkdomainextract',BulkDomainExtract);
-app.use(express.static(path.join(__dirname, "public")));
+// app.use(express.static(path.join(__dirname, "public")));
