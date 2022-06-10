@@ -251,8 +251,41 @@ const examuserscompleted = (req,res) => {
 }
 
 
+const deleteuserexam = (req,res) => {
 
+   UserExam.findByIdAndRemove(req.params.id)
+   .then(response=>{
+     res.json({
+       response:true
+     })
+   })
+
+  // UserExam.findByIdAndRemove(req.params.id)
+  // .then(res.json({
+  //   response:true
+  // }))
+}
+
+
+const viewcertificate = (req,res) => {
+  UserExam.findOne({student_exam_code:req.params.student_exam_code},(err,examinfo)=>{
+    if(examinfo===null){
+      res.json({
+        response:false
+      })
+    }else{
+      User.findById(examinfo.user_id)
+      .then(userinfo=>{
+        res.json({
+          response:true,
+          userinfo,
+          examinfo
+        })
+      })
+    }
+  })
+}
 
 module.exports = {
-  index,store,view,update,deletefile,latestexam,examcreateview,startexam,viewscore,submitexam,examusersactive,examuserscompleted
+  index,store,viewcertificate,view,update,deleteuserexam,deletefile,latestexam,examcreateview,startexam,viewscore,submitexam,examusersactive,examuserscompleted
 };

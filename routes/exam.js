@@ -22,8 +22,16 @@ router.post('/view_score',ExamController.viewscore);
 
 router.post('/',ExamController.store);
 router.get('/:id',ExamController.view);
+router.get('/viewcertificate/:student_exam_code',ExamController.viewcertificate);
+
 router.put('/:id',ExamController.update);
 router.patch('/:id',ExamController.deletefile);
+
+router.patch('/deleteuserexam/:id',ExamController.deleteuserexam);
+
+
+
+
 
 
 

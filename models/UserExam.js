@@ -38,6 +38,12 @@ const UserExamSchema = new Schema({
   exam_question_answer_data:{
     type:Object
   },
+  exam_start_datetime:{
+    type:Date
+  },
+  exam_end_datetime:{
+    type:Date
+  },
 },{timestamps:true})
 
 const UserExam = mongoose.model('UserExam',UserExamSchema)
