@@ -95,6 +95,22 @@ const login = (req,res) => {
   })
 }
 
+
+const forgetpassword = (req,res) => {
+  User.findOne({email:req.body.email},(err,doc)=>{
+    if(doc===null){
+      res.json({
+        response:false
+      })
+    }else{
+      res.json({
+        response:true
+      })
+    }
+  })
+}
+
+
 module.exports = {
-  index,store,view,update,deletefile,login
+  index,store,view,update,deletefile,login,forgetpassword
 };

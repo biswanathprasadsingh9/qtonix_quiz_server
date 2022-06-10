@@ -12,7 +12,7 @@ const index = (req,res) => {
 
     var options = {
       format: "A4",
-      orientation: "portrait",
+      orientation: "landscape",
       border: "10mm",
     };
 
@@ -55,8 +55,11 @@ const index = (req,res) => {
     console.log(document);
     pdf
     .create(document, options)
-    .then((res) => {
-      console.log(res);
+    .then((resas) => {
+      console.log(resas);
+      res.json({
+        response:true
+      })
     })
     .catch((error) => {
       console.error(error);

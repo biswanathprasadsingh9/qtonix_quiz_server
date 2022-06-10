@@ -1,26 +1,86 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Print</title>
-
-    </head>
-    <body>
-
-  <div style="width:90%; height:600px; padding:20px; text-align:center; border: 10px solid #787878">
-  <div style="width:94.5%; height:550px; padding:20px; text-align:center; border: 5px solid #787878">
-         <span style="font-size:50px; font-weight:bold">Certificate of Completion</span>
-         <br><br>
-         <span style="font-size:25px"><i>This is to certify that</i></span>
-         <br><br>
-         <span style="font-size:30px"><b>{{name}}</b></span><br/><br/>
-         <span style="font-size:25px"><i>has completed the course</i></span> <br/><br/>
-         <span style="font-size:30px">$course.getName()</span> <br/><br/>
-         <span style="font-size:20px">with score of <b>$grade.getPoints()%</b></span> <br/><br/><br/><br/>
-         <span style="font-size:25px"><i>dated</i></span><br>
-        #set ($dt = $DateFormatter.getFormattedDate($grade.getAwardDate(), "MMMM dd, yyyy"))
-        <span style="font-size:30px">$dt</span>
-  </div>
-  </div>
-
-    </body>
+  <head>
+    <title>Print</title>
+  </head>
+  <body>
+    <div
+      style="
+        width: 96%;
+        height: 800px;
+        padding: 20px;
+        text-align: center;
+        border: 10px solid #787878;
+      "
+    >
+      <div
+        style="
+          width: 94.5%;
+          height: 750px;
+          padding: 20px;
+          text-align: center;
+          border: 5px solid #787878;
+        "
+      >
+        <span
+          ><img
+            src="https://cdn.pixabay.com/photo/2017/02/17/15/25/quiz-2074324_960_720.png"
+            alt="Italian Trulli"
+            style="height: 90px; width: 90px;" /></span
+        ><br /><br />
+        <span
+          style="
+            font-size: 46px;
+            font-weight: bold;
+            font-family: Sans-serif;
+            text-transform: uppercase;
+          "
+          >Certificate of Completion</span
+        >
+        <br /><br />
+        <span style="font-size: 16px;"><p>This certifies that</p></span>
+        <br />
+        <span style="font-size: 30px;"><b>{{name}}</b></span
+        ><br /><br />
+        <span style="font-size: 16px;"
+          ><p>
+            has completed the course of study and passed <span><br /></span> w3
+            school's HTML exam and is here by declared a
+          </p></span
+        >
+        <br /><br />
+        <span style="font-size: 25px;"><b>Certified Banking Quiz</b></span>
+        <br /><br />
+        <span style="font-size: 20px;"
+          >with fundamental knowledge of webdevelopment using <b>HTML5</b></span
+        >
+        <br /><br />
+        <span style="font-size: 16px;"
+          ><p><b>issued june 9 2022</b></p></span
+        ><br />
+        <span
+          ><img
+            src="https://signaturely.com/wp-content/uploads/2020/04/oprah-winfrey-signature-signaturely.png"
+            alt="signature"
+            style="
+              height: 70px;
+              width: 80px;
+              position: absolute;
+              right: 18%;
+            " /></span
+        ><br /><br /><br />
+        <span
+          style="
+            border-bottom: 1px dotted black;
+            width: 150px;
+            position: absolute;
+            right: 16%;
+          "
+        ></span>
+        <span style="position: absolute; right: 17%;"
+          ><p>stamp signature</p></span
+        >
+      </div>
+    </div>
+  </body>
 </html>

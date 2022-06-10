@@ -1,6 +1,8 @@
 const response = require("express");
 
 const Exam = require("../models/Exam");
+const User = require("../models/User");
+
 const Quiz = require("../models/Quiz");
 const UserExam = require("../models/UserExam");
 
@@ -150,11 +152,14 @@ const startexam = (req,res) => {
   })
 }
 
-const submitexam = (req,res) => {
+const submitexam = async (req,res) => {
+  var user_info= await User.findById(req.body.user_id);
 
 
   UserExam.findOneAndUpdate({user_id:req.body.user_id,exam_id:req.body.exam_id},req.body)
   .then(response=>{
+
+
 
 
     //PDF GENERATE
@@ -165,7 +170,7 @@ const submitexam = (req,res) => {
 
 
     var options = {
-      format: "A3",
+      format: "A4",
       orientation: "landscape",
       border: "10mm",
     };
@@ -175,7 +180,7 @@ const submitexam = (req,res) => {
     var document = {
       html: html,
       data: {
-        name:'Biswnath Prasad Singh'
+        name:user_info.name
       },
       path: "./public/pdf/" + response.student_exam_code + ".pdf",
       type: "pdf", // "stream" || "buffer" || "" ("" defaults to pdf)

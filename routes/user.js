@@ -11,6 +11,8 @@ router.put('/:id',UserController.update);
 router.patch('/:id',UserController.deletefile);
 
 router.post('/login',UserController.login);
+router.post('/forgetpassword',UserController.forgetpassword);
+
 
 
 

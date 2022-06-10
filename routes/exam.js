@@ -2,10 +2,10 @@ const express = require('express');
 const router = express.Router();
 
 const ExamController = require('../controllers/ExamController');
-// const PDFController = require('../controllers/PDFController');
+const PDFController = require('../controllers/PDFController');
 
 
-// router.get('/pdfgenerate',PDFController.index);
+router.get('/pdfgenerate',PDFController.index);
 
 router.get('/',ExamController.index);
 router.post('/latestexam',ExamController.latestexam);
