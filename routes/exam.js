@@ -17,6 +17,11 @@ router.get('/exam_users_active/:exam_id',ExamController.examusersactive);
 router.get('/exam_users_completed/:exam_id',ExamController.examuserscompleted);
 
 
+router.get('/view_user_exams/:user_id',ExamController.viewuserexams);
+
+
+router.post('/userdashboard',ExamController.userdashboard);
+
 
 router.post('/view_score',ExamController.viewscore);
 

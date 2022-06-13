@@ -35,6 +35,7 @@ const latestexam = (req,res) => {
           questions:[]
         })
       }else{
+
         Quiz.find({exam_id:doc._id})
         .then(datas=>{
           res.json({
@@ -286,6 +287,71 @@ const viewcertificate = (req,res) => {
   })
 }
 
+
+
+const viewuserexams = (req,res) => {
+  UserExam.find({user_id:req.params.user_id, certificate_url: { $ne: 'not_generatedz' } })
+  .then(datas=>{
+    res.json({
+      response:true,
+      datas
+    })
+  })
+}
+
+
+const userdashboard =(req,res) => {
+  Exam.findOne({status:true},(err,doc)=>{
+    if(doc===undefined){
+      res.json({
+        response:false
+      })
+    }else{
+      if(doc===null){
+        res.json({
+          response:false,
+          examinfo:doc,
+          questions:[]
+        })
+      }else{
+
+
+        UserExam.findOne({exam_id:doc._id, user_id:req.body.user_id},(err,docuexam)=>{
+          if(docuexam===null){
+
+            Quiz.find({exam_id:doc._id})
+            .then(datas=>{
+              res.json({
+                response:true,
+                examinfo:doc,
+                questions:datas,
+                user_examinfo:false
+              })
+            })
+
+          }else{
+            Quiz.find({exam_id:doc._id})
+            .then(datas=>{
+              res.json({
+                response:true,
+                examinfo:doc,
+                questions:datas,
+                user_examinfo:docuexam
+              })
+            })
+          }
+
+        })
+
+
+
+
+
+      }
+    }
+  })
+}
+
 module.exports = {
-  index,store,viewcertificate,view,update,deleteuserexam,deletefile,latestexam,examcreateview,startexam,viewscore,submitexam,examusersactive,examuserscompleted
+  index,store,viewuserexams,userdashboard,viewcertificate,view,update,deleteuserexam,deletefile,latestexam,examcreateview,startexam,viewscore,submitexam,examusersactive,examuserscompleted
 };
