@@ -144,6 +144,23 @@ const examcreateview = (req,res) =>{
   })
 }
 
+
+const examcreateview1 = (req,res) =>{
+  UserExam.findOne({user_id:req.body.user_id,exam_id:req.body.exam_id},(err,doc)=>{
+    if(doc===null){
+
+      res.json({
+        response:false,
+      })
+    }else{
+      res.json({
+        response:true,
+        datas:doc
+      })
+    }
+  })
+}
+
 const startexam = (req,res) => {
   UserExam.findOneAndUpdate({user_id:req.body.user_id,exam_id:req.body.exam_id},req.body)
   .then(response=>{
@@ -364,5 +381,5 @@ const userdashboard =(req,res) => {
 }
 
 module.exports = {
-  index,store,viewexamdetails,viewuserexams,userdashboard,viewcertificate,view,update,deleteuserexam,deletefile,latestexam,examcreateview,startexam,viewscore,submitexam,examusersactive,examuserscompleted
+  index,store,viewexamdetails,examcreateview1,viewuserexams,userdashboard,viewcertificate,view,update,deleteuserexam,deletefile,latestexam,examcreateview,startexam,viewscore,submitexam,examusersactive,examuserscompleted
 };

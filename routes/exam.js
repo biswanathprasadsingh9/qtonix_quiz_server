@@ -10,6 +10,10 @@ router.get('/pdfgenerate',PDFController.index);
 router.get('/',ExamController.index);
 router.post('/latestexam',ExamController.latestexam);
 router.post('/exam_create_view',ExamController.examcreateview);
+router.post('/exam_create_view1',ExamController.examcreateview1);
+
+
+
 router.post('/start_exam',ExamController.startexam);
 router.post('/submit_exam',ExamController.submitexam);
 
