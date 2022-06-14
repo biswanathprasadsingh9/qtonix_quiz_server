@@ -35,6 +35,10 @@ router.patch('/:id',ExamController.deletefile);
 router.patch('/deleteuserexam/:id',ExamController.deleteuserexam);
 
 
+router.post('/viewexamdetails',ExamController.viewexamdetails);
+
+
+
 
 
 

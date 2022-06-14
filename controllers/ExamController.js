@@ -300,6 +300,17 @@ const viewuserexams = (req,res) => {
 }
 
 
+const viewexamdetails = (req,res) => {
+  UserExam.findOne({user_id:req.body.user_id, exam_id:req.body.exam_id})
+  .then(data=>{
+    res.json({
+      response:true,
+      data
+    })
+  })
+}
+
+
 const userdashboard =(req,res) => {
   Exam.findOne({status:true},(err,doc)=>{
     if(doc===undefined){
@@ -353,5 +364,5 @@ const userdashboard =(req,res) => {
 }
 
 module.exports = {
-  index,store,viewuserexams,userdashboard,viewcertificate,view,update,deleteuserexam,deletefile,latestexam,examcreateview,startexam,viewscore,submitexam,examusersactive,examuserscompleted
+  index,store,viewexamdetails,viewuserexams,userdashboard,viewcertificate,view,update,deleteuserexam,deletefile,latestexam,examcreateview,startexam,viewscore,submitexam,examusersactive,examuserscompleted
 };
