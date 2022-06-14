@@ -95,6 +95,22 @@ const login = (req,res) => {
   })
 }
 
+const adminlogin = (req,res) => {
+  User.findOne({email:req.body.email,password:req.body.password,type:'Admin'},(err,doc)=>{
+    if(doc===null){
+      res.json({
+        response:false
+      })
+    }else{
+      res.json({
+        response:true,
+        data:doc
+      })
+    }
+  })
+}
+
+
 
 const forgetpassword = (req,res) => {
   User.findOne({email:req.body.email},(err,doc)=>{
@@ -112,5 +128,5 @@ const forgetpassword = (req,res) => {
 
 
 module.exports = {
-  index,store,view,update,deletefile,login,forgetpassword
+  index,store,view,adminlogin,update,deletefile,login,forgetpassword
 };
