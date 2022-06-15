@@ -42,6 +42,55 @@ app.get('/', (req,res)=>{
 })
 
 
+app.get('/testing',async (req,res)=>{
+
+  ss();
+  ss();
+  ss();
+  ss();
+
+
+
+
+
+})
+
+
+
+async function ss(){
+  const puppeteer = require('puppeteer');
+
+  (async () => {
+
+    const browser = await puppeteer.launch({headless: false,defaultViewport: null});
+    const page = await browser.newPage();
+    await page.goto('http://localhost:3000');
+    await page.goto('http://localhost:3000/login');
+
+    await page.type('#email', "admin@admin.com");
+    await page.type('#password', "admin@admin.com");
+    await page.evaluate(()=>document.querySelector('#submit').click());
+
+
+    // await page.waitForNavigation();
+    // await page.waitFor(5000);
+
+    // await page.waitForNavigation({waitUntil: 'load'})
+
+    await page.waitForFunction(() => document.readyState === "complete");
+
+
+    let producttype;
+    if ((await page.$('#startexam')) !== null) {
+      // await page.click('#startexam');
+    } else {
+      // await page.click('#continueexam');
+    }
+
+  })();
+}
+
+
 app.get('/update', (req,res)=>{
     // const QuizDatabase = require('./models/Quiz');
     //
