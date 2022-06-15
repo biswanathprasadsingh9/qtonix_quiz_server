@@ -6,6 +6,7 @@ const User = require("../models/User");
 const Quiz = require("../models/Quiz");
 const UserExam = require("../models/UserExam");
 
+process.env.TZ = "Asia/Calcutta";
 
 
 

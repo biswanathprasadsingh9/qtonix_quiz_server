@@ -10,6 +10,7 @@ const Exam = require('./routes/exam');
 const Quiz = require('./routes/quiz');
 const User = require('./routes/user');
 
+process.env.TZ = "Asia/Calcutta";
 
 mongoose.connect(process.env.MONGODB, {useNewUrlParser: true, useUnifiedTopology:true});
 const db = mongoose.connection;
