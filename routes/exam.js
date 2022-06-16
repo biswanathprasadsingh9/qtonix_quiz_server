@@ -8,6 +8,10 @@ const PDFController = require('../controllers/PDFController');
 router.get('/pdfgenerate',PDFController.index);
 
 router.get('/',ExamController.index);
+router.get('/examusers',ExamController.examusers);
+
+
+
 router.post('/latestexam',ExamController.latestexam);
 router.post('/exam_create_view',ExamController.examcreateview);
 router.post('/exam_create_view1',ExamController.examcreateview1);
