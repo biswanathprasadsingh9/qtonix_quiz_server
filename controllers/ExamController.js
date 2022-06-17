@@ -26,7 +26,7 @@ const index = (req, res) => {
 const examusers = (req,res) => {
   UserExam.find()
     .sort({ _id: -1 })
-    .select({ "_id": 1,"user_id": 1, "exam_id": 1, "exam_start": 1, "exam_finished": 1, "exam_score": 1})
+    .select({ "_id": 1,"user_id": 1, "exam_id": 1, "exam_start": 1, "exam_finished": 1, "exam_score": 1, "student_exam_code":1})
     .then((response) => {
       res.json({
         response: true,
