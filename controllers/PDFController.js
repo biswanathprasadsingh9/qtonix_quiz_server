@@ -48,7 +48,9 @@ const index = (req,res) => {
       data: {
         name:'Biswnath Prasad Singh'
       },
-      path: "./public/pdf/" + invoice_number + ".pdf",
+      // path: "./public/pdf/" + invoice_number + ".pdf",
+      path: "./public/pdf/" + "test" + ".pdf",
+
       type: "pdf", // "stream" || "buffer" || "" ("" defaults to pdf)
     };
 
