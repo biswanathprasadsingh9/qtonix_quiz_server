@@ -44,6 +44,12 @@ const UserExamSchema = new Schema({
   exam_end_datetime:{
     type:Date
   },
+  ip_info:{
+    type:Object
+  },
+  device_info:{
+    type:Object
+  }
 },{timestamps:true})
 
 const UserExam = mongoose.model('UserExam',UserExamSchema)
