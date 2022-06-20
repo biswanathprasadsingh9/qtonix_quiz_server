@@ -9,6 +9,8 @@ var path = require("path");
 const Exam = require('./routes/exam');
 const Quiz = require('./routes/quiz');
 const User = require('./routes/user');
+const Company = require('./routes/company');
+
 
 process.env.TZ = "Asia/Calcutta";
 
@@ -129,5 +131,9 @@ const server = app.listen(process.env.PORT || 5009, () =>
 app.use('/api/exam',Exam);
 app.use('/api/quiz',Quiz);
 app.use('/api/user',User);
+app.use('/api/company',Company);
+
+
+
 
 app.use(express.static(path.join(__dirname, "public")));
