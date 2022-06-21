@@ -2,6 +2,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const ExamSchema = new Schema({
+  company_id:{
+    type:String
+  },
   name:{
     type:String
   },

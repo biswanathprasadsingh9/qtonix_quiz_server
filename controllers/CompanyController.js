@@ -15,6 +15,22 @@ const index = (req, res) => {
     });
 };
 
+//CHECK COMPANY EXIST OR NOT
+const checkcompany = (req,res) => {
+  Company.findOne({register_url:req.body.register_url},(err,doc)=>{
+    if(doc===null){
+      res.json({
+        response:false
+      })
+    }else{
+      res.json({
+        response:true,
+        data:doc
+      })
+    }
+  })
+}
+
 
 //STORE
 const store = (req,res) => {
@@ -47,5 +63,5 @@ const update = (req,res) => {
 
 
 module.exports = {
-  index,store,update
+  index,store,update,checkcompany
 };

@@ -5,6 +5,10 @@ const CompanyController = require('../controllers/CompanyController');
 
 
 router.get('/',CompanyController.index);
+
+router.post('/check',CompanyController.checkcompany);
+
+
 router.post('/',CompanyController.store);
 router.put('/:id',CompanyController.update);
 

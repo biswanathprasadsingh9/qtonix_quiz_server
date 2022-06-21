@@ -68,8 +68,6 @@ const latestexam = (req,res) => {
 
 const store = (req,res) => {
 
-  console.log(req.body)
-
   Exam.findOne({name:req.body.name},(err,doc)=>{
     console.log(doc)
     if(doc===null){
