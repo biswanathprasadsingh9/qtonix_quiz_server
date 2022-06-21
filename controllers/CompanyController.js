@@ -17,7 +17,7 @@ const index = (req, res) => {
 
 //CHECK COMPANY EXIST OR NOT
 const checkcompany = (req,res) => {
-  Company.findOne({register_url:req.body.register_url},(err,doc)=>{
+  Company.findOne({register_url:req.body.register_url,status:true},(err,doc)=>{
     if(doc===null){
       res.json({
         response:false
