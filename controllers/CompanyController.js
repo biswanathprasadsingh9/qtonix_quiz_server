@@ -3,6 +3,13 @@ const response = require("express");
 const Company = require("../models/Company");
 
 
+const ImageKit = require("imagekit");
+var imagekit = new ImageKit({
+  publicKey: 'public_Jt6OJjalO7RID1n8yFgxeCxRO44=',
+  privateKey: 'private_QtpEEoAzdLoIszG3hC74wS0tBQs=',
+  urlEndpoint: 'https://ik.imagekit.io/biswanath',
+});
+
 // INDEX
 const index = (req, res) => {
   Company.find()
@@ -29,6 +36,33 @@ const checkcompany = (req,res) => {
       })
     }
   })
+}
+
+//UPLOAD IMAGE
+const uploadimage = (req,res) => {
+
+  const encoded = req.file.buffer.toString("base64");
+
+  imagekit
+    .upload({
+      file: encoded,
+      fileName: "quiz.jpg",
+      useUniqueFileName: true,
+      folder: "quiz_app",
+    })
+    .then((response) => {
+      res.json({
+        response: true,
+        data: response,
+      });
+    })
+    .catch((error) => {
+      res.json({
+        response: error,
+      });
+    });
+
+
 }
 
 
@@ -63,5 +97,5 @@ const update = (req,res) => {
 
 
 module.exports = {
-  index,store,update,checkcompany
+  index,store,update,checkcompany,uploadimage
 };
