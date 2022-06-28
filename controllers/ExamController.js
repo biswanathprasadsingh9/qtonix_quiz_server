@@ -37,7 +37,7 @@ const examusers = (req,res) => {
 
 
 const latestexam = (req,res) => {
-  Exam.findOne({status:true},(err,doc)=>{
+  Exam.findOne({status:true,company_id:req.body.userinfo.company_id},(err,doc)=>{
     if(doc===undefined){
       res.json({
         response:false
@@ -342,6 +342,7 @@ const viewexamdetails = (req,res) => {
 
 
 const userdashboard =(req,res) => {
+
   Exam.findOne({status:true,company_id:req.body.userinfo.company_id},(err,doc)=>{
     if(doc===undefined){
       res.json({
