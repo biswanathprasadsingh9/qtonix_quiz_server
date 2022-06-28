@@ -90,9 +90,15 @@ const login = (req,res) => {
       })
     }else{
 
-      Company.findOne({_id:doc.company_id})
+      Company.findById(doc.company_id)
       .then(companyinfo=>{
         console.log(companyinfo)
+
+        var datas=doc
+        datas.cname=companyinfo.name;
+        datas.clogo=companyinfo.logo;
+
+
         res.json({
           response:true,
           data:doc,
