@@ -1,6 +1,8 @@
 const response = require("express");
 
 const User = require("../models/User");
+const Company = require("../models/Company");
+
 
 
 // INDEX
@@ -87,10 +89,18 @@ const login = (req,res) => {
         response:false
       })
     }else{
-      res.json({
-        response:true,
-        data:doc
+
+      Company.findOne({_id:doc.company_id})
+      .then(companyinfo=>{
+        console.log(companyinfo)
+        res.json({
+          response:true,
+          data:doc,
+          companyinfo:companyinfo
+        })
       })
+
+
     }
   })
 }

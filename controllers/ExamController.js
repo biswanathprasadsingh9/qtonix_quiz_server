@@ -342,7 +342,7 @@ const viewexamdetails = (req,res) => {
 
 
 const userdashboard =(req,res) => {
-  Exam.findOne({status:true},(err,doc)=>{
+  Exam.findOne({status:true,company_id:req.body.userinfo.company_id},(err,doc)=>{
     if(doc===undefined){
       res.json({
         response:false
@@ -352,14 +352,12 @@ const userdashboard =(req,res) => {
         res.json({
           response:false,
           examinfo:doc,
-          questions:[]
+          questions:[],
         })
       }else{
 
-
-        UserExam.findOne({exam_id:doc._id, user_id:req.body.user_id},(err,docuexam)=>{
+        UserExam.findOne({exam_id:doc._id, user_id:req.body.userinfo._id,company_id:req.body.userinfo.company_id},(err,docuexam)=>{
           if(docuexam===null){
-
             Quiz.find({exam_id:doc._id})
             .then(datas=>{
               res.json({

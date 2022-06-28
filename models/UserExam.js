@@ -5,6 +5,9 @@ const UserExamSchema = new Schema({
   user_id:{
     type:String
   },
+  company_id:{
+    type:String
+  },
   exam_id:{
     type:String
   },
