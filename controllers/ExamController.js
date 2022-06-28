@@ -37,6 +37,9 @@ const examusers = (req,res) => {
 
 
 const latestexam = (req,res) => {
+
+  console.log(req.body)
+
   Exam.findOne({status:true,company_id:req.body.userinfo.company_id},(err,doc)=>{
     if(doc===undefined){
       res.json({
