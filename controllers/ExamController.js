@@ -50,8 +50,7 @@ const latestexam = (req,res) => {
           questions:[]
         })
       }else{
-
-        Quiz.find({exam_id:doc._id})
+        Quiz.find({exam_id:doc._id,company_id:req.body.userinfo.company_id})
         .then(datas=>{
           res.json({
             response:true,
