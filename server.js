@@ -22,7 +22,7 @@ db.on('error',(err)=>{
     console.log(err);
 });
 db.once('open',()=>{
-    console.log('Successfully Connected');
+    console.log('Successfully Connected.');
 })
 
 const app = express();
