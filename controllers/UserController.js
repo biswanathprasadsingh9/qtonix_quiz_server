@@ -18,6 +18,19 @@ const index = (req, res) => {
 };
 
 
+const fetchundercompany = (req, res) => {
+  User.find({company_id:req.params.company_id})
+    .sort({ _id: -1 })
+    .then((response) => {
+      res.json({
+        response: true,
+        datas: response,
+      });
+    });
+};
+
+
+
 
 const store = (req,res) => {
 
@@ -144,5 +157,5 @@ const forgetpassword = (req,res) => {
 
 
 module.exports = {
-  index,store,view,adminlogin,update,deletefile,login,forgetpassword
+  index,fetchundercompany,store,view,adminlogin,update,deletefile,login,forgetpassword
 };

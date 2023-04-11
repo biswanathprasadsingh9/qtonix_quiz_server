@@ -7,6 +7,7 @@ const multer  = require('multer')
 const upload = multer({});
 
 router.get('/',CompanyController.index);
+router.get('/fetchundercompany/:company_id',CompanyController.fetchundercompany);
 
 router.post('/check',CompanyController.checkcompany);
 

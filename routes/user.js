@@ -5,6 +5,9 @@ const UserController = require('../controllers/UserController');
 
 
 router.get('/',UserController.index);
+router.get('/fetchundercompany/:company_id',UserController.fetchundercompany);
+
+
 router.post('/',UserController.store);
 router.get('/:id',UserController.view);
 router.put('/:id',UserController.update);

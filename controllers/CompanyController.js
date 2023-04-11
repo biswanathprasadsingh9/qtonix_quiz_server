@@ -22,6 +22,17 @@ const index = (req, res) => {
     });
 };
 
+const fetchundercompany = (req,res) => {
+  Company.find({_id:req.params.company_id})
+    .sort({ _id: -1 })
+    .then((response) => {
+      res.json({
+        response: true,
+        datas: response,
+      });
+    });
+}
+
 //CHECK COMPANY EXIST OR NOT
 const checkcompany = (req,res) => {
   Company.findOne({register_url:req.body.register_url,status:true},(err,doc)=>{
@@ -97,5 +108,5 @@ const update = (req,res) => {
 
 
 module.exports = {
-  index,store,update,checkcompany,uploadimage
+  index,fetchundercompany,store,update,checkcompany,uploadimage
 };

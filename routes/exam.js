@@ -8,7 +8,13 @@ const PDFController = require('../controllers/PDFController');
 router.get('/pdfgenerate',PDFController.index);
 
 router.get('/',ExamController.index);
+router.get('/fetchundercompany/:company_id',ExamController.fetchundercompany);
+
+
+
+
 router.get('/examusers',ExamController.examusers);
+router.get('/examusers/fetchundercompany/:company_id',ExamController.examusersfetchundercompany);
 
 
 

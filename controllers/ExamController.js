@@ -22,6 +22,17 @@ const index = (req, res) => {
     });
 };
 
+const fetchundercompany = (req,res) => {
+  Exam.find({company_id:req.params.company_id})
+    .sort({ _id: -1 })
+    .then((response) => {
+      res.json({
+        response: true,
+        datas: response,
+      });
+    });
+}
+
 
 const examusers = (req,res) => {
   UserExam.find()
@@ -34,6 +45,21 @@ const examusers = (req,res) => {
       });
     });
 }
+
+const examusersfetchundercompany = (req,res) => {
+  UserExam.find({company_id:req.params.company_id})
+    .sort({ _id: -1 })
+    .select({ "_id": 1,"user_id": 1, "exam_id": 1, "exam_start": 1, "exam_finished": 1, "exam_score": 1, "student_exam_code":1})
+    .then((response) => {
+      res.json({
+        response: true,
+        datas: response,
+      });
+    });
+}
+
+
+
 
 
 const latestexam = (req,res) => {
@@ -395,5 +421,5 @@ const userdashboard =(req,res) => {
 }
 
 module.exports = {
-  index,examusers,store,viewexamdetails,examcreateview1,viewuserexams,userdashboard,viewcertificate,view,update,deleteuserexam,deletefile,latestexam,examcreateview,startexam,viewscore,submitexam,examusersactive,examuserscompleted
+  index,fetchundercompany,examusers,examusersfetchundercompany,store,viewexamdetails,examcreateview1,viewuserexams,userdashboard,viewcertificate,view,update,deleteuserexam,deletefile,latestexam,examcreateview,startexam,viewscore,submitexam,examusersactive,examuserscompleted
 };
