@@ -104,12 +104,16 @@ const login = (req,res) => {
     }else{
 
       Company.findById(doc.company_id)
+      // Company.findById('62b55547affedd7bbdfb602d')
       .then(companyinfo=>{
-        console.log(companyinfo)
+
 
         var datas=doc
         datas.cname=companyinfo.name;
         datas.clogo=companyinfo.logo;
+
+        //  datas.cname='Test';
+        // datas.clogo='logo.png';
 
 
         res.json({
