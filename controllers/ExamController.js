@@ -64,7 +64,7 @@ const examusersfetchundercompany = (req,res) => {
 
 const latestexam = (req,res) => {
 
-  console.log(req.body)
+  console.log('latestexam',req.body)
 
   Exam.findOne({status:true,company_id:req.body.userinfo.company_id},(err,doc)=>{
     if(doc===undefined){
@@ -79,7 +79,7 @@ const latestexam = (req,res) => {
           questions:[]
         })
       }else{
-        Quiz.find({exam_id:doc._id,company_id:req.body.userinfo.company_id})
+        Quiz.find({exam_id:doc._id})
         .then(datas=>{
           res.json({
             response:true,
